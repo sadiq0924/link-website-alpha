@@ -1,0 +1,63 @@
+/*
+VOICE: friendly Hinglish blog, fast and clear, no tricks
+IDEA: a race with 4 checkpoints - each page is one checkpoint
+PICTURE: big round countdown ring at the top of every page
+COLOUR and TYPE: white ground, fire orange accent, deep teal support; Rubik
+LAYOUT: header, checkpoint bar, timer card, article + ad slots, footer links
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0d1416);--ink:light-dark(#14191b,#eef3f3);--soft:light-dark(#5a6669,#a3b1b4);
+--card:light-dark(#f4f7f7,#152124);--line:light-dark(#dde5e6,#243437);
+--fire:#ff5a1f;--teal:light-dark(#0e3b43,#2c8c98);--ok:#18a058}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 "Rubik",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--teal)}
+.wrap{max-width:860px;margin:0 auto;padding:0 max(4vw,16px)}
+
+header.top{background:var(--teal);color:#fff}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-block:14px}
+.logo{font-weight:800;font-size:20px;color:#fff;text-decoration:none}
+.logo b{color:var(--fire)}
+nav.links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px}
+nav.links a{color:#d9eef0;text-decoration:none}
+nav.links a[aria-current]{color:#fff;font-weight:600}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:22px 0 8px}
+.steps div{height:8px;border-radius:8px;background:var(--line)}
+.steps div.done{background:var(--ok)}.steps div.now{background:var(--fire)}
+.stepline{font-size:14px;color:var(--soft);margin:0}
+
+.gate{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center;
+background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:14px 0 26px}
+.ring{width:132px;height:132px;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;font-size:40px;font-weight:800;font-variant-numeric:tabular-nums}
+.gate h2{margin:0 0 6px;font-size:22px;line-height:1.2}
+.gate p{margin:0 0 12px;color:var(--soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:12px;border:0;
+background:var(--fire);color:#fff;font:600 17px "Rubik",sans-serif;text-decoration:none;cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.btn[hidden]{display:none}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+
+.ad{border:1px dashed var(--line);border-radius:12px;min-height:110px;margin:24px 0;display:grid;place-items:center;
+color:var(--soft);font-size:13px;text-align:center;padding:10px}
+.promo{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;justify-content:space-between;
+background:var(--fire);color:#fff;border-radius:16px;padding:18px 20px;margin:26px 0}
+.promo strong{font-size:19px;display:block}
+.promo .btn{background:#fff;color:#c2410c}
+
+article h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:8px 0 12px;text-wrap:balance}
+article h2{font-size:22px;margin:28px 0 8px}
+article .meta{color:var(--soft);font-size:14px;margin:0 0 18px}
+article li{margin:6px 0}
+.tip{border-left:4px solid var(--teal);background:var(--card);padding:12px 16px;border-radius:0 12px 12px 0}
+
+.bottom{text-align:center;margin:30px 0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 34px;font-size:14px;color:var(--soft)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+footer a{color:var(--soft)}
+
+@media(max-width:600px){.gate{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.ring{width:116px;height:116px}}
+@media(prefers-reduced-motion:reduce){.ring circle{transition:none!important}}
